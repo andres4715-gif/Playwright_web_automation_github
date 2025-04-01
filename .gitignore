@@ -1,0 +1,40 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Test reports
+reports/
+screenshots/
+videos/
+
+# Environment variables
+.env
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Playwright browser binaries
+.playwright-browsers/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Coverage output
+coverage/
+.nyc_output/

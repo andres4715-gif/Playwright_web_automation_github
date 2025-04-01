@@ -1,0 +1,54 @@
+{
+  "name": "playwright-automation-framework",
+  "version": "1.0.0",
+  "description": "UI Automation Framework with Playwright, TypeScript, Cucumber and POM",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc",
+    "test": "cucumber-js --require-module ts-node/register --require src/step-definitions/**/*.ts",
+    "working": "npx cucumber-js --tags @Working",
+    "codegen": "npx playwright codegen https://demo.nopcommerce.com/",
+    "test:chrome": "cross-env BROWSER=chrome cucumber-js --require-module ts-node/register --require src/step-definitions/**/*.ts",
+    "test:firefox": "cross-env BROWSER=firefox cucumber-js --require-module ts-node/register --require src/step-definitions/**/*.ts",
+    "test:webkit": "cross-env BROWSER=webkit cucumber-js --require-module ts-node/register --require src/step-definitions/**/*.ts",
+    "test:parallel": "cucumber-js --require-module ts-node/register --require src/step-definitions/**/*.ts --parallel 3",
+    "report": "node dist/utils/reporter.js",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "playwright",
+    "cucumber",
+    "typescript",
+    "automation",
+    "pom"
+  ],
+  "author": "Andres Rios",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^9.1.0",
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "@playwright/test": "^1.35.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "fs-extra": "^11.1.1",
+    "multiple-cucumber-html-reporter": "^3.3.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^20.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "globals": "^16.0.0",
+    "prettier": "^2.8.8",
+    "tsconfig-paths": "^4.2.0",
+    "typescript-eslint": "^8.29.0"
+  }
+}
