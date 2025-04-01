@@ -1,4 +1,6 @@
-# Playwright WEB Automation Framework
+![image](https://github.com/user-attachments/assets/31f26d24-1148-4861-ba67-bafd32fdedd3)
+
+# Playwright WEB(UI) Automation Framework: ✅
 
 A modern, scalable UI automation framework for web testing, built with Playwright, TypeScript, Cucumber, and Page Object
 Model pattern.
