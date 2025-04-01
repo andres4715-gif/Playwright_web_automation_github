@@ -1,4 +1,4 @@
-import { Page, Locator, Browser, BrowserContext } from "@playwright/test";
+import {Page, Locator, Browser, BrowserContext} from "@playwright/test";
 
 export default class BasePage {
   readonly page: Page;
@@ -72,7 +72,7 @@ export default class BasePage {
     timeout: number = 30000
   ): Promise<void> {
     const element = await this.getElement(selector);
-    await element.waitFor({ state: "visible", timeout });
+    await element.waitFor({state: "visible", timeout});
   }
 
   /**
@@ -104,6 +104,10 @@ export default class BasePage {
    * @param path - Path to save screenshot
    */
   async takeScreenshot(path: string): Promise<void> {
-    await this.page.screenshot({ path });
+    await this.page.screenshot({path});
+  }
+
+  async waitForTimeout(time: number) {
+    await this.page.waitForTimeout(time);
   }
 }

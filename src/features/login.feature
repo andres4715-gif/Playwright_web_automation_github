@@ -11,11 +11,12 @@ Feature: User Login Functionality
   Scenario: Successful login with valid credentials
     When I enter valid email "test@example.com" and password "password123"
     And I click on the login button
-#    Then I should be logged in successfully
-#    And I should see my account page
-#
-#  Scenario: Unsuccessful login with invalid credentials
-#    When I enter invalid email "invalid@example.com" and password "wrongpassword"
-#    And I click on the login button
-#    Then I should see an error message
-#    And I should remain on the login page
+    Then I should be logged in successfully
+    And I should see my account page
+
+  @Regression @Working
+  Scenario: Unsuccessful login with invalid credentials
+    When I enter invalid email "invalid@example.com" and password "wrongpassword"
+    And I click on the login button
+    Then I should see an error message
+    And I should remain on the login page

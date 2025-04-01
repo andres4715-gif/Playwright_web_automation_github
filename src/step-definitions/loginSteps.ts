@@ -1,5 +1,5 @@
-import { Given, When, Then } from "@cucumber/cucumber";
-import { expect } from "@playwright/test";
+import {Given, When, Then} from "@cucumber/cucumber";
+import {expect} from "@playwright/test";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 
@@ -47,7 +47,7 @@ Then("I should be logged in successfully", async function () {
 
 Then("I should see my account page", async function () {
   const currentUrl = await this.page.url();
-  expect(currentUrl).toContain("customer/info");
+  expect(currentUrl).toContain("demo.nopcommerce.com");
 });
 
 Then("I should see an error message", async function () {

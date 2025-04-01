@@ -1,5 +1,7 @@
 # Playwright WEB Automation Framework
-A modern, scalable UI automation framework for web testing, built with Playwright, TypeScript, Cucumber, and Page Object Model pattern.
+
+A modern, scalable UI automation framework for web testing, built with Playwright, TypeScript, Cucumber, and Page Object
+Model pattern.
 
 ## Project Test Folder Structure
 
@@ -57,23 +59,27 @@ playwright-automation-framework/
 - **CI/CD Ready**: Set up for continuous integration pipelines
 
 ## Prerequisites
+
 - Node.js (v14 or higher)
 - npm (v7 or higher)
 
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/Playwright_web_automation.git
 cd Playwright_web_automation
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Install Playwright browsers:
+
 ```bash
 npx playwright install
 ```
@@ -101,12 +107,14 @@ npm run test:parallel
 ```
 
 ### Run by @tag
+
 it is to run any tag to run any test that you are working on.
 
 ```bash
 - Example:
 npm run working
 ```
+
 ### Generate reports:
 
 ```bash
@@ -177,7 +185,10 @@ Feature: User Login
 5. Open a Pull Request
 
 # TO DO
+
 - [ ] Update Clone the repository in the readme file
+- [ ] Add a log library to print by console
+- [ ] Create a new BaseTest file to inherit from this class
 
 ---
 🔥🛠️⚙️ Framework under construction 🔥🛠️⚙️
