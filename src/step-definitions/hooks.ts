@@ -4,12 +4,15 @@ import {
   BrowserContext,
   chromium,
   firefox,
+  Page,
   webkit,
 } from "@playwright/test";
 import { getConfig } from "../utils/config";
+import BaseTest from "../../BaseTest";
 
 let browser: Browser;
 let context: BrowserContext;
+let page: Page;
 
 // Get browser from config or environment variable
 const getBrowser = async (): Promise<Browser> => {
@@ -39,9 +42,15 @@ Before(async function () {
     userAgent: "Playwright-Test/1.0",
   });
 
+  page = await context.newPage();
+
+  // Asignar `page` al contexto de Cucumber
   this.browser = browser;
   this.context = context;
-  this.page = await context.newPage();
+  this.page = page;
+
+  // Crear instancia de BaseTest y asignarla a `this`
+  this.baseTest = new BaseTest(page);
 });
 
 After(async function ({ result }) {

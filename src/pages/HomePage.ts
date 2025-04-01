@@ -20,7 +20,7 @@ export default class HomePage extends BasePage {
    * Navigate to homepage
    */
   async navigateToHomePage(): Promise<void> {
-    await this.navigate();
+    await this.navigate("");
   }
 
   /**

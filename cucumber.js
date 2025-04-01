@@ -1,7 +1,10 @@
 module.exports = {
   default: {
     paths: ['src/features/'],
-    require: ['src/step-definitions/**/*.ts'],
+    require: [
+      'src/support/world.ts',
+      'src/step-definitions/**/*.ts'
+    ],
     requireModule: ['ts-node/register'],
     format: [
       'summary',
