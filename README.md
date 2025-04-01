@@ -191,6 +191,8 @@ Feature: User Login
 - [X] Create a new BaseTest file to inherit from this class
 - [ ] Update Clone the repository in the readme file
 - [ ] Add a log library to print by console
+- [ ] Run with a Docker Machine
+- [ ] Run each sunday with GitHub Actions
 
 ---
 🔥🛠️ Framework under construction 🔥⚙️
