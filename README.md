@@ -193,7 +193,7 @@ Feature: User Login
 - [ ] Add a log library to print by console
 - [ ] Run with a Docker Machine
 - [ ] Run each sunday with GitHub Actions
-- [ ] Check this file src/utils/config.ts because this config is not working well
+- [ ] Check this file src/utils/config.ts because this config is not working well implement .env file
 
 ---
 🔥🛠️ Framework under construction 🔥⚙️
