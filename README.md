@@ -186,9 +186,9 @@ Feature: User Login
 
 # TO DO
 
+- [X] Create a new BaseTest file to inherit from this class
 - [ ] Update Clone the repository in the readme file
 - [ ] Add a log library to print by console
-- [ ] Create a new BaseTest file to inherit from this class
 
 ---
-🔥🛠️⚙️ Framework under construction 🔥🛠️⚙️
+🔥🛠️ Framework under construction 🔥⚙️
