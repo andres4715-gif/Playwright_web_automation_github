@@ -7,14 +7,14 @@ Feature: User Login Functionality
     Given I am on the nopCommerce homepage
     And I navigate to the login page
 
-  @Regression @Working
+  @Regression
   Scenario: Successful login with valid credentials
     When I enter valid email "test@example.com" and password "password123"
     And I click on the login button
     Then I should be logged in successfully
     And I should see my account page
 
-  @Regression @Working
+  @Regression
   Scenario: Unsuccessful login with invalid credentials
     When I enter invalid email "invalid@example.com" and password "wrongpassword"
     And I click on the login button

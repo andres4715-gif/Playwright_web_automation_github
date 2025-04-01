@@ -7,7 +7,7 @@ Feature: User Registration Functionality
     Given I am on the nopCommerce homepage
     And I navigate to the register page
 
-  @Regression
+  @Regression @Working
   Scenario: Successful registration with valid data
     When I select gender as "Male"
     And I enter first name "John" and last name "Doe"
