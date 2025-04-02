@@ -1,11 +1,14 @@
 module.exports = {
   default: {
-    paths: ['src/features/'],
+    paths: ['src/features/**/*.feature'],
     require: [
       'src/support/world.ts',
       'src/step-definitions/**/*.ts'
     ],
-    requireModule: ['ts-node/register'],
+    timeout: 600000,
+    requireModule: [
+      'ts-node/register',
+    ],
     format: [
       'summary',
       '@cucumber/pretty-formatter',

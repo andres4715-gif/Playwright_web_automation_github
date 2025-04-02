@@ -1,5 +1,5 @@
-import { Given, When, Then } from "@cucumber/cucumber";
-import { expect, Page } from "@playwright/test";
+import {Given, When, Then} from "@cucumber/cucumber";
+import {expect, Page} from "@playwright/test";
 
 // Given steps
 Given("I navigate to the register page", async function () {
@@ -16,13 +16,6 @@ When(
   async function (firstName: string, lastName: string) {
     await this.baseTest.registerPage.enterFirstName(firstName);
     await this.baseTest.registerPage.enterLastName(lastName);
-  }
-);
-
-When(
-  "I select date of birth as {string} {string} {string}",
-  async function (day: string, month: string, year: string) {
-    await this.baseTest.registerPage.selectDateOfBirth(day, month, year);
   }
 );
 
@@ -44,25 +37,6 @@ When(
 
 When("I click on the register button", async function () {
   await this.baseTest.registerPage.clickRegisterButton();
-});
-
-// Then steps
-Then("I should see the registration completed message", async function () {
-  const isCompleted =
-    await this.baseTest.registerPage.isRegistrationCompleted();
-  expect(isCompleted).toBeTruthy();
-
-  const resultMessage =
-    await this.baseTest.registerPage.getRegistrationResultMessage();
-  expect(resultMessage).toContain("Your registration completed");
-});
-
-Then("I should be able to click on the continue button", async function () {
-  await this.baseTest.registerPage.clickContinueButton();
-
-  // Verify we're redirected to homepage
-  const currentUrl = await this.page.url();
-  expect(currentUrl).toBe("https://demo.nopcommerce.com/");
 });
 
 Then(

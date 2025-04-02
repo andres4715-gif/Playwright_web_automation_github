@@ -1,5 +1,5 @@
 import BasePage from "./BasePage";
-import { Page } from "@playwright/test";
+import {Page} from "@playwright/test";
 
 export default class RegisterPage extends BasePage {
   // Selectors
@@ -7,9 +7,6 @@ export default class RegisterPage extends BasePage {
   private readonly genderFemaleRadio = "#gender-female";
   private readonly firstNameInput = "#FirstName";
   private readonly lastNameInput = "#LastName";
-  private readonly dateOfBirthDaySelect = '[name="DateOfBirthDay"]';
-  private readonly dateOfBirthMonthSelect = '[name="DateOfBirthMonth"]';
-  private readonly dateOfBirthYearSelect = '[name="DateOfBirthYear"]';
   private readonly emailInput = "#Email";
   private readonly companyInput = "#Company";
   private readonly passwordInput = "#Password";
@@ -57,39 +54,6 @@ export default class RegisterPage extends BasePage {
    */
   async enterLastName(lastName: string): Promise<void> {
     await this.fill(this.lastNameInput, lastName);
-  }
-
-  /**
-   * Select date of birth
-   * @param day - The day
-   * @param month - The month
-   * @param year - The year
-   */
-  async selectDateOfBirth(
-    day: string,
-    month: string,
-    year: string
-  ): Promise<void> {
-    await this.selectOption(this.dateOfBirthDaySelect, day);
-    // Convert month name to number
-    const monthMap: { [key: string]: string } = {
-      january: "1",
-      february: "2",
-      march: "3",
-      april: "4",
-      may: "5",
-      june: "6",
-      july: "7",
-      august: "8",
-      september: "9",
-      october: "10",
-      november: "11",
-      december: "12",
-    };
-
-    const monthNumber = monthMap[month.toLowerCase()] || month;
-    await this.selectOption(this.dateOfBirthMonthSelect, monthNumber);
-    await this.selectOption(this.dateOfBirthYearSelect, year);
   }
 
   /**

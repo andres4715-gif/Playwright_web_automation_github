@@ -44,12 +44,12 @@ Before(async function () {
 
   page = await context.newPage();
 
-  // Asignar `page` al contexto de Cucumber
+  // `page` Cucumber context
   this.browser = browser;
   this.context = context;
   this.page = page;
 
-  // Crear instancia de BaseTest y asignarla a `this`
+  // new BaseTest instance and assign it to `this`
   this.baseTest = new BaseTest(page);
 });
 
