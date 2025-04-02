@@ -195,6 +195,7 @@ Feature: User Login
 - [ ] Run each sunday with GitHub Actions
 - [ ] Check this file src/utils/config.ts because this config is not working well implement .env file
 - [ ] Learn about how use pause();
+- [ ] Check how can I implement de environment variables with existing file
 
 ---
 🔥🛠️ Framework under construction 🔥⚙️

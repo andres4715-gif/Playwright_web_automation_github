@@ -1,12 +1,14 @@
-import { Page, Locator, Browser, BrowserContext } from "@playwright/test";
+import {Page, Locator} from "@playwright/test";
 
 export default class BasePage {
   readonly page: Page;
   readonly baseUrl: string;
 
+  public url: string = "https://demo.nopcommerce.com/";
+
   constructor(page: Page) {
     this.page = page;
-    this.baseUrl = "https://demo.nopcommerce.com/";
+    this.baseUrl = this.url;
   }
 
   /**
@@ -72,7 +74,7 @@ export default class BasePage {
     timeout: number = 30000
   ): Promise<void> {
     const element = await this.getElement(selector);
-    await element.waitFor({ state: "visible", timeout });
+    await element.waitFor({state: "visible", timeout});
   }
 
   /**
@@ -93,18 +95,11 @@ export default class BasePage {
   }
 
   /**
-   * Wait for navigation to complete
-   */
-  async waitForNavigation(): Promise<void> {
-    await this.page.waitForNavigation();
-  }
-
-  /**
    * Take screenshot
    * @param path - Path to save screenshot
    */
   async takeScreenshot(path: string): Promise<void> {
-    await this.page.screenshot({ path });
+    await this.page.screenshot({path});
   }
 
   async waitForTimeout(time: number) {
