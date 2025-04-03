@@ -67,22 +67,6 @@ export function wait(ms: number): Promise<void> {
 }
 
 /**
- * Format date to string
- * @param date - Date to format
- * @param format - Format string (default: yyyy-MM-dd)
- */
-export function formatDate(date: Date, format: string = "yyyy-MM-dd"): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-
-  return format
-    .replace("yyyy", year.toString())
-    .replace("MM", month)
-    .replace("dd", day);
-}
-
-/**
  * Read test data from JSON file
  * @param filename - JSON file name
  */

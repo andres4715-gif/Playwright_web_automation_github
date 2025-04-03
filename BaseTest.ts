@@ -16,8 +16,8 @@ export default class BaseTest {
     this.page = page;
 
     this.basePage = new BasePage(page);
-    this.loginPage = new LoginPage(page);
     this.homePage = new HomePage(page);
+    this.loginPage = new LoginPage(page);
     this.registerPage = new RegisterPage(page);
   }
 }

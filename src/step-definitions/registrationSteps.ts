@@ -1,5 +1,4 @@
 import {Given, When, Then} from "@cucumber/cucumber";
-import {expect, Page} from "@playwright/test";
 
 // Given steps
 Given("I navigate to the register page", async function () {
@@ -38,16 +37,3 @@ When(
 When("I click on the register button", async function () {
   await this.baseTest.registerPage.clickRegisterButton();
 });
-
-Then(
-  "I should see an error message indicating email already exists",
-  async function () {
-    const isErrorDisplayed =
-      await this.baseTest.registerPage.isErrorMessageDisplayed();
-    expect(isErrorDisplayed).toBeTruthy();
-
-    const errorMessage =
-      await this.baseTest.registerPage.getExistingEmailError();
-    expect(errorMessage).toContain("already exists");
-  }
-);

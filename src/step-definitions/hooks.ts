@@ -1,4 +1,4 @@
-import { Before, After, BeforeAll, AfterAll, Status } from "@cucumber/cucumber";
+import {Before, After, BeforeAll, AfterAll, Status} from "@cucumber/cucumber";
 import {
   Browser,
   BrowserContext,
@@ -7,7 +7,7 @@ import {
   Page,
   webkit,
 } from "@playwright/test";
-import { getConfig } from "../utils/config";
+import {getConfig} from "../utils/config";
 import BaseTest from "../../BaseTest";
 
 let browser: Browser;
@@ -20,12 +20,12 @@ const getBrowser = async (): Promise<Browser> => {
 
   switch (browserType.toLowerCase()) {
     case "firefox":
-      return await firefox.launch({ headless: getConfig().headless });
+      return await firefox.launch({headless: getConfig().headless});
     case "webkit":
-      return await webkit.launch({ headless: getConfig().headless });
+      return await webkit.launch({headless: getConfig().headless});
     case "chrome":
     default:
-      return await chromium.launch({ headless: getConfig().headless });
+      return await chromium.launch({headless: getConfig().headless});
   }
 };
 
@@ -35,9 +35,9 @@ BeforeAll(async () => {
 
 Before(async function () {
   context = await browser.newContext({
-    viewport: { width: 1920, height: 1080 },
+    viewport: {width: 1920, height: 1080},
     recordVideo: getConfig().recordVideo
-      ? { dir: "reports/videos/" }
+      ? {dir: "reports/videos/"}
       : undefined,
     userAgent: "Playwright-Test/1.0",
   });
@@ -53,7 +53,7 @@ Before(async function () {
   this.baseTest = new BaseTest(page);
 });
 
-After(async function ({ result }) {
+After(async function ({result}) {
   // Take screenshot if test fails
   if (result && result.status === Status.FAILED) {
     const screenshot = await this.page.screenshot({

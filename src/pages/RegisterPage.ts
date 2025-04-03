@@ -24,9 +24,9 @@ export default class RegisterPage extends BasePage {
   /**
    * Navigate to register page
    */
-  async navigateToRegisterPage(): Promise<void> {
-    await this.navigate("register");
-  }
+  // async navigateToRegisterPage(): Promise<void> {
+  //   await this.navigate("register");
+  // }
 
   /**
    * Select gender
@@ -93,27 +93,6 @@ export default class RegisterPage extends BasePage {
    */
   async clickRegisterButton(): Promise<void> {
     await this.click(this.registerButton);
-  }
-
-  /**
-   * Get registration result message
-   */
-  async getRegistrationResultMessage(): Promise<string> {
-    return await this.getText(this.registerResultMessage);
-  }
-
-  /**
-   * Click continue button
-   */
-  async clickContinueButton(): Promise<void> {
-    await this.click(this.continueButton);
-  }
-
-  /**
-   * Check if registration completed message is displayed
-   */
-  async isRegistrationCompleted(): Promise<boolean> {
-    return await this.isVisible(this.registerResultMessage);
   }
 
   /**

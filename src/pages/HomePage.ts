@@ -6,11 +6,6 @@ export default class HomePage extends BasePage {
   private readonly loginLink = ".ico-login";
   private readonly registerLink = ".ico-register";
   private readonly logoutLink = ".ico-logout";
-  private readonly myAccountLink = ".ico-account";
-  private readonly searchBox = "#small-searchterms";
-  private readonly searchButton = "#small-search-box-form .button-1";
-  private readonly cartLink = "#topcartlink";
-  private readonly wishlistLink = ".wishlist-label";
 
   constructor(page: Page) {
     super(page);
@@ -42,35 +37,5 @@ export default class HomePage extends BasePage {
    */
   async isUserLoggedIn(): Promise<boolean> {
     return await this.isVisible(this.logoutLink);
-  }
-
-  /**
-   * Navigate to my account page
-   */
-  async navigateToMyAccountPage(): Promise<void> {
-    await this.click(this.myAccountLink);
-  }
-
-  /**
-   * Search for a product
-   * @param searchTerm - The term to search for
-   */
-  async searchForProduct(searchTerm: string): Promise<void> {
-    await this.fill(this.searchBox, searchTerm);
-    await this.click(this.searchButton);
-  }
-
-  /**
-   * Go to shopping cart
-   */
-  async goToShoppingCart(): Promise<void> {
-    await this.click(this.cartLink);
-  }
-
-  /**
-   * Go to wishlist
-   */
-  async goToWishlist(): Promise<void> {
-    await this.click(this.wishlistLink);
   }
 }
