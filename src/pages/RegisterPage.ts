@@ -12,8 +12,6 @@ export default class RegisterPage extends BasePage {
   private readonly passwordInput = "#Password";
   private readonly confirmPasswordInput = "#ConfirmPassword";
   private readonly registerButton = "#register-button";
-  private readonly registerResultMessage = ".result";
-  private readonly continueButton = ".register-continue-button";
   private readonly errorMessage = ".message-error.validation-summary-errors";
   private readonly existingEmailError = ".message-error li";
 

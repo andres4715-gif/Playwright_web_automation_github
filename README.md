@@ -196,6 +196,7 @@ Feature: User Login
 - [ ] Check this file src/utils/config.ts because this config is not working well implement .env file
 - [ ] Learn about how use pause();
 - [ ] Check how can I implement de environment variables with existing file
+- [ ] Add new way to run @Tags from a new file with new setup
 
 ---
 🔥🛠️ Framework under construction 🔥⚙️

@@ -6,6 +6,9 @@ export default class HomePage extends BasePage {
   private readonly loginLink = ".ico-login";
   private readonly registerLink = ".ico-register";
   private readonly logoutLink = ".ico-logout";
+  private readonly searchBox = "#small-searchterms";
+  private readonly submitSearchBox = "[type='submit']";
+
 
   constructor(page: Page) {
     super(page);
@@ -37,5 +40,13 @@ export default class HomePage extends BasePage {
    */
   async isUserLoggedIn(): Promise<boolean> {
     return await this.isVisible(this.logoutLink);
+  }
+
+  async addSearch(product: string): Promise<void> {
+    await this.fill(this.searchBox, product);
+  }
+
+  async submitSearchButton(): Promise<void> {
+    await this.click(this.submitSearchBox);
   }
 }

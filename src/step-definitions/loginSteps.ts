@@ -1,13 +1,9 @@
 import {Given, When, Then} from "@cucumber/cucumber";
 import {expect, Page} from "@playwright/test";
-import BaseTest from "../../BaseTest";
 
 // Given steps
 Given("I am on the nopCommerce homepage", async function () {
-  const page: Page = this.page as Page;
-  const baseTest = new BaseTest(page);
-
-  await baseTest.homePage.navigateToHomePage();
+  await this.baseTest.homePage.navigateToHomePage();
 });
 
 Given("I navigate to the login page", async function () {
