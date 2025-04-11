@@ -14,7 +14,7 @@ Feature: User Login Functionality
     Then I should be logged in successfully
     And I should see my account page
 
-  @Regression
+  @Regression @Pipeline
   Scenario: Unsuccessful login with invalid credentials
     When I enter invalid email "invalid@example.com" and password "wrongpassword"
     And I click on the login button

@@ -12,7 +12,7 @@ class CustomWorld extends World {
 
   constructor(options: CustomWorldOptions) {
     super(options);
-    // No inicializar page/context aquí
+
   }
 }
 
