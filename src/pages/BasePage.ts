@@ -1,10 +1,10 @@
-import {Page, Locator} from "@playwright/test";
+import {Page, Locator, expect} from '@playwright/test';
 
 export default class BasePage {
   readonly page: Page;
   readonly baseUrl: string;
 
-  public url: string = "https://demo.nopcommerce.com/";
+  public url: string = 'https://demo.nopcommerce.com/';
 
   constructor(page: Page) {
     this.page = page;
@@ -15,7 +15,7 @@ export default class BasePage {
    * Navigate to a specific URL
    * @param path - The path to navigate to
    */
-  async navigate(path: string = ""): Promise<void> {
+  async navigate(path: string = ''): Promise<void> {
     await this.page.goto(`${this.baseUrl}${path}`);
   }
 
@@ -30,9 +30,18 @@ export default class BasePage {
   /**
    * Click on an element
    * @param selector - The selector to click on
+   * @param timeout
    */
-  async click(selector: string): Promise<void> {
+  async click(selector: string, timeout: number = 10000): Promise<void> {
     const element = await this.getElement(selector);
+
+    await Promise.all([
+      expect(element).toBeVisible({timeout}),
+      expect(element).toBeEnabled({timeout}),
+    ]);
+
+    await element.scrollIntoViewIfNeeded();
+    await element.click({trial: true});
     await element.click();
   }
 
@@ -71,10 +80,10 @@ export default class BasePage {
    */
   async waitForElement(
     selector: string,
-    timeout: number = 30000
+    timeout: number = 10000
   ): Promise<void> {
     const element = await this.getElement(selector);
-    await element.waitFor({state: "visible", timeout});
+    await element.waitFor({state: 'visible', timeout});
   }
 
   /**
