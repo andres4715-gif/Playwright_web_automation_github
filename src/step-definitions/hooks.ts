@@ -29,7 +29,7 @@ const getBrowser = async (): Promise<Browser> => {
   }
 };
 
-BeforeAll(async () => {
+BeforeAll({ timeout: 20000 }, async () => {
   browser = await getBrowser();
 });
 
