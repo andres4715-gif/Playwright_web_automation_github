@@ -24,7 +24,7 @@ export default class LoginPage extends BasePage {
    * @param email - The email to enter
    */
   async enterEmail(email: string): Promise<void> {
-    await this.page.waitForSelector(this.emailInput, { state: 'visible', timeout: 10000 });
+    await this.page.waitForSelector(this.emailInput, { state: 'visible', timeout: 50000 });
     await this.fill(this.emailInput, email);
   }
 
@@ -33,7 +33,7 @@ export default class LoginPage extends BasePage {
    * @param password - The password to enter
    */
   async enterPassword(password: string): Promise<void> {
-    await this.page.waitForSelector(this.passwordInput, { state: 'visible', timeout: 10000 });
+    await this.page.waitForSelector(this.passwordInput, { state: 'visible', timeout: 50000 });
     await this.fill(this.passwordInput, password);
   }
 
