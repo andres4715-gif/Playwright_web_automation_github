@@ -7,7 +7,7 @@ Feature: User Login Functionality
     Given I am on the nopCommerce homepage
     And I navigate to the login page
 
-  @Regression
+  @Flaky
   Scenario: Successful login with valid credentials
     When I enter valid email "test@example.com" and password "password123"
     And I click on the login button

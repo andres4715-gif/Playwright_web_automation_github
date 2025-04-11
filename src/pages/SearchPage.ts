@@ -1,10 +1,11 @@
-import BasePage from "./BasePage";
-import { Page } from "@playwright/test";
+import BasePage from './BasePage';
+import {Page, expect} from '@playwright/test';
 
 export default class SearchPage extends BasePage {
   // Selectors
-  private readonly searchTitle = ".page-title h1";
-  private readonly productAddToCartButton = "button[type='button']:nth-child(1)";
+  private readonly searchTitle = '.page-title h1';
+  private readonly productAddToCartButton =
+    "button[type='button']:nth-child(1)";
 
   constructor(page: Page) {
     super(page);
@@ -19,7 +20,6 @@ export default class SearchPage extends BasePage {
   }
 
   async clickAddToCartButton(): Promise<void> {
-    await this.waitForElement(this.productAddToCartButton);
     await this.click(this.productAddToCartButton);
   }
 }
