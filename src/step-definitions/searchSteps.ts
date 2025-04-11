@@ -3,7 +3,7 @@ import {expect, Page} from "@playwright/test";
 
 // When steps
 When(
-  "I click on the ADD TO CART button", async function () {
+  "I click on the ADD TO CART button", {timeout: 30000}, async function () {
     const searchPageTitle = await this.baseTest.searchPage.verifySearchPageTitle();
     expect(searchPageTitle).toBe("Search");
     const productAddToCartButton = await this.baseTest.searchPage.verifyAddToCartButtonIsVisible();

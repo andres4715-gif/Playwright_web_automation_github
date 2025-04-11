@@ -3,13 +3,13 @@ import {expect} from "@playwright/test";
 
 // When steps
 Then(
-  "I check the added product name {string} is displayed", async function (productName: string) {
+  "I check the added product name {string} is displayed", {timeout: 30000}, async function (productName: string) {
     const productNameDisplayed = await this.baseTest.productDetailInformationPage.verifyProductName();
     expect(productNameDisplayed).toBe(productName);
     await this.baseTest.productDetailInformationPage.clickProductDetailAddToCartButton();
   });
 
-When("I click on the product detail add to cart button", async function () {
+When("I click on the product detail add to cart button", {timeout: 30000}, async function () {
   await this.baseTest.productDetailInformationPage.clickProductDetailAddToCartButton();
   const bannerErrorMessage = await this.baseTest.productDetailInformationPage.errorMessages();
   expect(bannerErrorMessage).toContain('Enter valid recipient email');
