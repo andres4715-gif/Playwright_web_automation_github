@@ -1,10 +1,11 @@
 import {Page, Locator, expect} from '@playwright/test';
+import {getConfig} from "../utils/config";
 
 export default class BasePage {
   readonly page: Page;
   readonly baseUrl: string;
 
-  public url: string = 'https://demo.nopcommerce.com/';
+  public url: string = getConfig().baseUrl;
 
   constructor(page: Page) {
     this.page = page;
