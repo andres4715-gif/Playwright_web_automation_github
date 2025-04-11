@@ -10,7 +10,7 @@
     "working": "npx cucumber-js --tags @Working",
     "regression": "npx cucumber-js --tags @Regression",
     "flaky": "npx cucumber-js --tags @Flaky",
-    "pipeline": "npx cucumber-js --tags @@Pipeline",
+    "pipeline": "npx cucumber-js --tags @Pipeline",
     "codegen": "npx playwright codegen https://demo.nopcommerce.com/",
     "test:chrome": "cross-env BROWSER=chrome cucumber-js --require-module ts-node/register --require src/step-definitions/**/*.ts",
     "test:firefox": "cross-env BROWSER=firefox cucumber-js --require-module ts-node/register --require src/step-definitions/**/*.ts",
