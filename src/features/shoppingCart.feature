@@ -5,7 +5,7 @@ Feature: Shopping cart Functionality
   Background:
     Given I am on the nopCommerce homepage
 
-  @Regression
+  @Regression @Working
   Scenario: Verify error messages adding a product to the Shopping Cart
     When I enter this product "25 Virtual Gift Card" in the search box
     And I click on the ADD TO CART button
