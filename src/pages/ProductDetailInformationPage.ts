@@ -1,11 +1,11 @@
 import BasePage from "./BasePage";
-import { Page } from "@playwright/test";
+import {expect, Page} from "@playwright/test";
 
 export default class ProductDetailInformationPage extends BasePage {
   // Selectors
   private readonly productName = "#product-details-form .product-name";
   private readonly productDetailAddToCartButton = "button[id='add-to-cart-button-45']";
-  private readonly errorMessageBanner = "[class='bar-notification error']"
+  private readonly errorMessageBanner = ".bar-notification"
 
   constructor(page: Page) {
     super(page);
@@ -20,6 +20,8 @@ export default class ProductDetailInformationPage extends BasePage {
   }
 
   async errorMessages(): Promise<string> {
+    const numberOfMessage = await this.getText(this.errorMessageBanner).then(x => x.split('\n').filter(x => x.replaceAll(' ', '')).length);
+    expect(numberOfMessage).toBe(4);
     return await this.getText(this.errorMessageBanner);
   }
 }
