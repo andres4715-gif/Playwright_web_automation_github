@@ -20,6 +20,7 @@ export default class SearchPage extends BasePage {
   }
 
   async clickAddToCartButton(): Promise<void> {
+    await this.page.waitForTimeout(2000);
     await this.click(this.productAddToCartButton);
   }
 }

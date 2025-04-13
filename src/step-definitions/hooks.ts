@@ -17,7 +17,7 @@ const getBrowser = async (): Promise<Browser> => {
       return await webkit.launch({ headless: getConfig().headless });
     case "chrome":
     default:
-      return await chromium.launch({ headless: getConfig().headless });
+      return await chromium.launch({ headless: process.env.CI ? true : getConfig().headless });
   }
 };
 
