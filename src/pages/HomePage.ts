@@ -1,14 +1,12 @@
 import BasePage from "./BasePage";
-import { Page } from "@playwright/test";
+import {Page} from "@playwright/test";
 
 export default class HomePage extends BasePage {
   // Selectors
   private readonly loginLink = ".ico-login";
   private readonly registerLink = ".ico-register";
   private readonly logoutLink = ".ico-logout";
-  private readonly searchBox = "#small-searchterms";
   private readonly submitSearchBox = "[type='submit']";
-
 
   constructor(page: Page) {
     super(page);
@@ -43,10 +41,12 @@ export default class HomePage extends BasePage {
   }
 
   async addSearch(product: string): Promise<void> {
-    await this.fill(this.searchBox, product);
+    const searchStoreBox = await this.getByPlaceholder('Search store');
+    await searchStoreBox.fill(product);
   }
 
   async submitSearchButton(): Promise<void> {
-    await this.click(this.submitSearchBox);
+    const searchButton = await this.getByRole('button', 'Search');
+    await searchButton.click();
   }
 }

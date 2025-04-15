@@ -6,6 +6,7 @@ export default class SearchPage extends BasePage {
   private readonly searchTitle = '.page-title h1';
   private readonly productAddToCartButton =
     "button[type='button']:nth-child(1)";
+  private readonly productNameId = '#q';
 
   constructor(page: Page) {
     super(page);
@@ -15,7 +16,10 @@ export default class SearchPage extends BasePage {
     return await this.getText(this.searchTitle);
   }
 
-  async verifyAddToCartButtonIsVisible(): Promise<boolean> {
+  async verifyAddToCartButtonIsVisible(productName: string): Promise<boolean> {
+    const attribute = 'value';
+    const textByAttribute = await this.verifyTextByAttribute(this.productNameId, attribute);
+    expect(textByAttribute).toBe(productName);
     return await this.isVisible(this.productAddToCartButton);
   }
 

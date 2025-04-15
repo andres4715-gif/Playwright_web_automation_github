@@ -1,10 +1,9 @@
-import {Page, Locator, expect} from '@playwright/test';
-import {getConfig} from "../utils/config";
+import {expect, Locator, Page} from '@playwright/test';
+import {getConfig} from '../utils/config';
 
 export default class BasePage {
   readonly page: Page;
   readonly baseUrl: string;
-
   public url: string = getConfig().baseUrl;
 
   constructor(page: Page) {
@@ -29,12 +28,45 @@ export default class BasePage {
   }
 
   /**
-   * Click on an element
-   * @param selector - The selector to click on
-   * @param timeout
+   * Get Locator using data-testid
    */
-  async click(selector: string, timeout: number = 10000): Promise<void> {
-    const element = await this.getElement(selector);
+  async getByTestId(testId: string): Promise<Locator> {
+    return this.page.getByTestId(testId);
+  }
+
+  /**
+   * Get Locator using aria-label
+   */
+  async getByLabel(label: string): Promise<Locator> {
+    return this.page.getByLabel(label);
+  }
+
+  /**
+   * Get Locator by placeholder
+   */
+  async getByPlaceholder(placeholder: string): Promise<Locator> {
+    return this.page.getByPlaceholder(placeholder);
+  }
+
+  /**
+   * getByText
+   */
+  async getByText(text: string): Promise<Locator> {
+    return this.page.getByText(text);
+  }
+
+  /**
+   * getByRole
+   */
+  async getByRole(role: string, name?: string): Promise<Locator> {
+    return this.page.getByRole(role as any, name ? {name} : undefined);
+  }
+
+  /**
+   * Click on CSS locator
+   */
+  async click(locator: string | Locator, timeout: number = 10000): Promise<void> {
+    const element = typeof locator === 'string' ? await this.getElement(locator) : locator;
 
     await Promise.all([
       expect(element).toBeVisible({timeout}),
@@ -48,52 +80,59 @@ export default class BasePage {
 
   /**
    * Fill a form field
-   * @param selector - The selector of the form field
+   * @param locator - The selector of the form field
    * @param value - The value to fill
    */
-  async fill(selector: string, value: string): Promise<void> {
-    const element = await this.getElement(selector);
+  async fill(locator: string | Locator, value: string): Promise<void> {
+    const element = typeof locator === 'string' ? await this.getElement(locator) : locator;
     await element.fill(value);
   }
 
   /**
    * Get text from an element
-   * @param selector - The selector to get text from
+   * @param locator - The selector to get text from
    */
-  async getText(selector: string): Promise<string> {
-    const element = await this.getElement(selector);
+  async getText(locator: string | Locator): Promise<string> {
+    const element = typeof locator === 'string' ? await this.getElement(locator) : locator;
     return await element.innerText();
+  }
+
+  async verifyTextByAttribute(locator: string, attribute: string): Promise<string | undefined> {
+    try {
+      const element = await this.getElement(locator);
+      return await element.getAttribute(attribute) ?? undefined;
+    } catch (error) {
+      console.error(`🔥 Error getting attribute '${attribute}' from '${locator}':`, error);
+      return undefined;
+    }
   }
 
   /**
    * Check if element is visible
-   * @param selector - The selector to check visibility
+   * @param locator - The selector to check visibility
    */
-  async isVisible(selector: string): Promise<boolean> {
-    const element = await this.getElement(selector);
+  async isVisible(locator: string | Locator): Promise<boolean> {
+    const element = typeof locator === 'string' ? await this.getElement(locator) : locator;
     return await element.isVisible();
   }
 
   /**
    * Wait for element to be visible
-   * @param selector - The selector to wait for
+   * @param locator - The selector to wait for
    * @param timeout - The timeout in milliseconds
    */
-  async waitForElement(
-    selector: string,
-    timeout: number = 10000
-  ): Promise<void> {
-    const element = await this.getElement(selector);
+  async waitForElement(locator: string | Locator, timeout: number = 10000): Promise<void> {
+    const element = typeof locator === 'string' ? await this.getElement(locator) : locator;
     await element.waitFor({state: 'visible', timeout});
   }
 
   /**
    * Select option from dropdown
-   * @param selector - The dropdown selector
+   * @param locator
    * @param value - The value to select
    */
-  async selectOption(selector: string, value: string): Promise<void> {
-    const element = await this.getElement(selector);
+  async selectOption(locator: string | Locator, value: string): Promise<void> {
+    const element = typeof locator === 'string' ? await this.getElement(locator) : locator;
     await element.selectOption(value);
   }
 
@@ -112,6 +151,9 @@ export default class BasePage {
     await this.page.screenshot({path});
   }
 
+  /**
+   * Wait for specific time
+   */
   async waitForTimeout(time: number) {
     await this.page.waitForTimeout(time);
   }
