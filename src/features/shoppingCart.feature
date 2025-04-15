@@ -12,5 +12,5 @@ Feature: Shopping cart Functionality
     Then I check the added product name "$<product>" is displayed
     When I click on the product detail add to cart button
     Examples:
-      | product                 |
+      | product              |
       | 25 Virtual Gift Card |
