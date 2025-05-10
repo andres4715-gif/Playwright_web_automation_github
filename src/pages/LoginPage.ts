@@ -1,12 +1,15 @@
-import BasePage from "./BasePage";
-import {Page} from "@playwright/test";
+import BasePage from './BasePage';
+import { Locator, Page } from '@playwright/test';
 
 export default class LoginPage extends BasePage {
   // Selectors
-  private readonly emailInput = "#Email";
-  private readonly passwordInput = "#Password";
-  private readonly loginButton = "button.login-button";
-  private readonly errorMessage = ".message-error.validation-summary-errors";
+  private readonly emailInput: Locator = this.page.getByRole('textbox', {
+    name: 'email',
+  });
+
+  private readonly passwordInput: Locator = this.page.locator('#Password');
+  private readonly loginButton = 'button.login-button';
+  private readonly errorMessage = '.message-error.validation-summary-errors';
 
   constructor(page: Page) {
     super(page);
