@@ -20,3 +20,7 @@ Feature: User Login Functionality
     And I click on the login button
     Then I should see an error message
     And I should remain on the login page
+
+  @Regression @Working
+  Scenario: Check Remember me?
+    When I enter invalid email "invalid@example.com" and password "wrongpassword"

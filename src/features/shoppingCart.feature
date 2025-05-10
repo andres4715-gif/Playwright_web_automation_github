@@ -5,7 +5,7 @@ Feature: Shopping cart Functionality
   Background:
     Given I am on the nopCommerce homepage
 
-  @Regression @Working
+  @Regression
   Scenario Outline: Verify error messages adding a product to the Shopping Cart
     When I enter this product "<product>" in the search box
     And I click on the ADD TO CART button to search "<product>"
