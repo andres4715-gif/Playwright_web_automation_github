@@ -1,0 +1,59 @@
+name: Label PR with Branch Name
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  add-branch-label:
+    name: Add branch name as label
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Get branch name
+        id: branch
+        run: |
+          # Extract the source branch name from the PR head ref
+          BRANCH_NAME="${{ github.head_ref }}"
+          echo "Branch name: $BRANCH_NAME"
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+
+      - name: Create label if it does not exist
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          LABEL: ${{ steps.branch.outputs.branch_name }}
+        run: |
+          # Check if label already exists; if not, create it with a random color
+          EXISTING=$(gh api repos/$REPO/labels --jq ".[] | select(.name==\"$LABEL\") | .name" 2>/dev/null || true)
+
+          if [ -z "$EXISTING" ]; then
+            echo "Label '$LABEL' does not exist. Creating it..."
+            # Generate a consistent color based on the branch name (hex without #)
+            COLOR=$(echo -n "$LABEL" | md5sum | head -c 6)
+            gh api repos/$REPO/labels \
+              --method POST \
+              -f name="$LABEL" \
+              -f color="$COLOR" \
+              -f description="Auto-generated label for branch: $LABEL"
+            echo "Label '$LABEL' created with color #$COLOR"
+          else
+            echo "Label '$LABEL' already exists. Skipping creation."
+          fi
+
+      - name: Apply label to Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          LABEL: ${{ steps.branch.outputs.branch_name }}
+        run: |
+          echo "Applying label '$LABEL' to PR #$PR_NUMBER..."
+          gh api repos/$REPO/issues/$PR_NUMBER/labels \
+            --method POST \
+            -f "labels[]=$LABEL"
+          echo "Label applied successfully!"
